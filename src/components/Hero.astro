@@ -1,0 +1,112 @@
+<section class="hero">
+
+  <p class="eyebrow">// personal collection</p>
+  <h1>Backgrounds you <em>won't</em> have to google again</h1>
+  <p class="subtitle">A hand-crafted CSS background library, ready to copy and paste into your next project.</p>
+
+  <a href="#gallery" class="scroll-cue">Check out the collection ↓</a>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1rem;
+    color: var(--color-text);
+    overflow: hidden;
+  }
+
+  .eyebrow {
+    position: relative;
+    font-family: 'Cascadia code', sans-serif;
+    font-size: var(--fs-sm);
+    text-transform: uppercase;
+    color: var(--color-accent-gold);
+    margin-bottom: 1rem;
+    animation: heroFade 0.8s ease-out both;
+    animation-delay: 0.1s;
+  }
+
+  h1 {
+    position: relative;
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: var(--fs-display);
+    line-height: 1.1;
+    margin: 0 0 1.1rem;
+    max-width: 40rem;
+    animation: heroReveal 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: 0.25s;
+  }
+
+  h1 em {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--color-accent-violet);
+  }
+
+  .subtitle {
+    position: relative;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: var(--fs-base);
+    color: var(--color-text-muted);
+    max-width: 24rem;
+    margin: 0 0 2.5rem;
+    animation: heroFade 0.9s ease-out both;
+    animation-delay: 0.5s;
+  }
+
+  .scroll-cue {
+  position: relative;
+  display: inline-block;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: var(--fs-sm);
+  color: var(--color-text);
+  border-bottom: 1px solid var(--color-text-muted);
+
+  transition:
+    border-color 0.2s ease,
+    transform 0.5s ease;
+
+  animation: heroFade 0.9s ease-out both;
+  animation-delay: 0.75s;
+}
+
+.scroll-cue:hover {
+  border-color: var(--color-text);
+  transform: translateY(-2px) scale(1.03);
+}
+
+  /* HERO INTRO */
+
+@keyframes heroReveal {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+    filter: blur(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes heroFade {
+  from {
+    opacity: 0;
+    
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+</style>

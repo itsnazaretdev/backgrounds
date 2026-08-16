@@ -1,0 +1,59 @@
+---
+const { title, code } = Astro.props;
+---
+
+<article class="background-card">
+  <div class="preview">
+    <slot />
+  </div>
+
+  <div class="info">
+    <h3>{title}</h3>
+    <pre><code>{code}</code></pre>
+  </div>
+</article>
+
+<style>
+  .background-card {
+    border-radius: 1rem;
+    overflow: hidden;
+    background: var(--color-bg);
+    border: 1px solid rgba(232, 230, 227, 0.1);
+  }
+
+  .preview {
+    position: relative;
+    height: 12rem;
+    overflow: hidden;
+  }
+
+  .preview :global(.spotlight-demo) {
+    position: absolute;
+    inset: 0;
+    background: var(--gradient-spotlight);
+ }
+
+  .info {
+    padding: 1rem 1.25rem 1.25rem;
+  }
+
+  h3 {
+    font-family: var(--font-body);
+    font-size: var(--fs-lg);
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 0.6rem;
+  }
+
+  pre {
+    font-family: var(--font-mono);
+    font-size: var(--fs-sm);
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 0.5rem;
+    padding: 0.7rem 1rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+  }
+</style>
