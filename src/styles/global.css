@@ -52,12 +52,3 @@ a {
   color: inherit;
   text-decoration: none;
 }
-
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(17.5rem, 1fr));
-  gap: 1.5rem;
-  max-width: 75rem;
-  margin: 0 auto;
-  padding: 4rem 1.5rem;
-}

@@ -35,6 +35,17 @@ const auroraCode = `background:
 </section>
 
 <style>
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 4rem 1.5rem;
+  }
+
   .gallery-grid :global(.background-card) {
     opacity: 0;
     transform: translateY(30px);

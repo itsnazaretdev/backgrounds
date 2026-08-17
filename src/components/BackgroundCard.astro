@@ -25,28 +25,9 @@ const { title, code, background } = Astro.props;
 
 </article>
 
-<script>
-  const buttons = document.querySelectorAll<HTMLButtonElement>('.copy-button');
-
-  buttons.forEach((button) => {
-    button.addEventListener('click', async () => {
-      const code = button.dataset.code;
-
-      if (!code) return;
-
-      await navigator.clipboard.writeText(code);
-
-      button.textContent = 'Copied!';
-
-      setTimeout(() => {
-        button.textContent = 'Copy CSS';
-      }, 1500);
-    });
-  });
-</script>
-
 <style>
   .background-card {
+    width: 100%;
     overflow: hidden;
     border: 1px solid var(--color-text-muted);
     border-radius: 1rem;
@@ -93,3 +74,23 @@ const { title, code, background } = Astro.props;
     color: var(--color-text);
   }
 </style>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>('.copy-button');
+
+  buttons.forEach((button) => {
+    button.addEventListener('click', async () => {
+      const code = button.dataset.code;
+
+      if (!code) return;
+
+      await navigator.clipboard.writeText(code);
+
+      button.textContent = 'Copied!';
+
+      setTimeout(() => {
+        button.textContent = 'Copy CSS';
+      }, 1500);
+    });
+  });
+</script>
