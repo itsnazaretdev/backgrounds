@@ -1,9 +1,9 @@
 :root {
-  --color-bg: #16161a;
-  --color-text: #e8e6e3;
-  --color-text-muted: #9a96a3;
-  --color-accent-gold: #DFB65C;
-  --color-accent-violet: #B497D6;
+  --color-bg: #f0f0f0;
+  --color-text: #2e2e2e;
+  --color-text-muted: #6e6b76;
+  --color-accent-gold: #d8a435;
+  --color-accent-violet: #a47ecf;
 
   --font-display: 'Fraunces', serif;
   --font-body: 'Space Grotesk', sans-serif;

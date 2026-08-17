@@ -1,0 +1,73 @@
+---
+import BackgroundCard from '../components/BackgroundCard.astro';
+
+const auroraCode = `background:
+  radial-gradient(circle at 50% 35%, rgba(223, 182, 92, 0.35), transparent 32%),
+  radial-gradient(circle at 50% 35%, rgba(180, 151, 214, 0.18), transparent 55%);`;
+---
+
+<section class="gallery-grid" id="gallery">
+
+  <BackgroundCard
+    title="Aurora"
+    code={auroraCode}
+    background="radial-gradient(circle at 20% 30%, #7c3aed, transparent 40%), #09090b"
+  />
+
+  <BackgroundCard
+    title="Aurora"
+    code={auroraCode}
+    background="radial-gradient(circle at 20% 30%, #7c3aed, transparent 40%), #09090b"
+  />
+
+  <BackgroundCard
+    title="Aurora"
+    code={auroraCode}
+    background="radial-gradient(circle at 20% 30%, #7c3aed, transparent 40%), #09090b"
+  />
+
+  <BackgroundCard
+    title="Aurora"
+    code={auroraCode}
+    background="radial-gradient(circle at 20% 30%, #7c3aed, transparent 40%), #09090b"
+  />
+
+</section>
+
+<style>
+  .gallery-grid :global(.background-card) {
+    opacity: 0;
+    transform: translateY(30px);
+    transition:
+      opacity 0.7s ease,
+      transform 0.7s ease;
+  }
+
+  .gallery-grid :global(.background-card.visible) {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  const cards = document.querySelectorAll('.gallery-grid .background-card');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.15
+  });
+
+  cards.forEach((card, index) => {
+    const delay = Math.min(index * 0.08, 0.4);
+
+    (card as HTMLElement).style.transitionDelay = `${delay}s`;
+
+    observer.observe(card);
+  });
+</script>
