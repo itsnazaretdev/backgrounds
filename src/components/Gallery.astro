@@ -1,54 +1,39 @@
 ---
-import BackgroundCard from '../components/BackgroundCard.astro';
-
-const auroraCode = `background:
-  radial-gradient(circle at 50% 35%, rgba(223, 182, 92, 0.35), transparent 32%),
-  radial-gradient(circle at 50% 35%, rgba(180, 151, 214, 0.18), transparent 55%);`;
+import BackgroundCard from './BackgroundCard.astro';
+import { backgrounds } from '../data/backgrounds.js';
 ---
 
 <section class="gallery-grid" id="gallery">
-
-  <BackgroundCard
-    title="Aurora"
-    code={auroraCode}
-    background="radial-gradient(circle at 20% 30%, #7c3aed, transparent 40%), #09090b"
-  />
-
-  <BackgroundCard
-    title="Aurora"
-    code={auroraCode}
-    background="radial-gradient(circle at 20% 30%, #7c3aed, transparent 40%), #09090b"
-  />
-
-  <BackgroundCard
-    title="Aurora"
-    code={auroraCode}
-    background="radial-gradient(circle at 20% 30%, #7c3aed, transparent 40%), #09090b"
-  />
-
-  <BackgroundCard
-    title="Aurora"
-    code={auroraCode}
-    background="radial-gradient(circle at 20% 30%, #7c3aed, transparent 40%), #09090b"
-  />
-
+  {
+    backgrounds.map((item) => (
+      <BackgroundCard
+        title={item.title}
+        theme={item.theme}
+        background={item.background}
+        code={item.code}
+        /*tailwind={item.tailwind}*/
+      />
+    ))
+  }
 </section>
 
 <style>
-
   .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1.5rem;
     width: 100%;
-    max-width: 80rem;
-    margin: 0 auto;
-    padding: 4rem 1.5rem;
+    max-width: 90rem;
+    margin-inline: auto;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+
+    padding-inline: 1.5rem;
   }
 
   .gallery-grid :global(.background-card) {
     opacity: 0;
     transform: translateY(30px);
+
     transition:
       opacity 0.7s ease,
       transform 0.7s ease;
@@ -61,23 +46,31 @@ const auroraCode = `background:
 </style>
 
 <script>
-  const cards = document.querySelectorAll('.gallery-grid .background-card');
+  const cards = document.querySelectorAll(
+    '.gallery-grid .background-card'
+  );
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, {
-    threshold: 0.15
-  });
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.15
+    }
+  );
 
   cards.forEach((card, index) => {
     const delay = Math.min(index * 0.08, 0.4);
 
-    (card as HTMLElement).style.transitionDelay = `${delay}s`;
+    card.setAttribute(
+      'style',
+      `transition-delay: ${delay}s;`
+    );
 
     observer.observe(card);
   });

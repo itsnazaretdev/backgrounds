@@ -1,15 +1,11 @@
 ---
-interface Props {
-  title: string;
-  code: string;
-  background: string;
-}
-
-const { title, code, background } = Astro.props;
+const { title, code, background, theme } = Astro.props;
 ---
 
-<article class="background-card reveal">
-
+<article
+  class="background-card reveal"
+  data-theme={theme}
+>
   <div
     class="preview"
     style={`background: ${background};`}
@@ -18,11 +14,13 @@ const { title, code, background } = Astro.props;
   <div class="card-content">
     <h2>{title}</h2>
 
-    <button class="copy-button" data-code={code}>
+    <button
+      class="copy-button"
+      data-code={code}
+    >
       Copy CSS
     </button>
   </div>
-
 </article>
 
 <style>
@@ -57,16 +55,11 @@ const { title, code, background } = Astro.props;
   .copy-button {
     border: 0;
     padding: 0;
-
     background: none;
-
     color: var(--color-text-muted);
-
     font-family: 'Space Grotesk', sans-serif;
     font-size: var(--fs-sm);
-
     cursor: pointer;
-
     transition: color 0.2s ease;
   }
 
@@ -76,11 +69,11 @@ const { title, code, background } = Astro.props;
 </style>
 
 <script>
-  const buttons = document.querySelectorAll<HTMLButtonElement>('.copy-button');
+  const buttons = document.querySelectorAll('.copy-button');
 
   buttons.forEach((button) => {
     button.addEventListener('click', async () => {
-      const code = button.dataset.code;
+      const code = button.getAttribute('data-code');
 
       if (!code) return;
 
