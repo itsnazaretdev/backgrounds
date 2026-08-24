@@ -1,0 +1,142 @@
+---
+const { background, theme } = Astro.props;
+---
+
+<div class="preview-site" data-theme={theme} style={`background: ${background};`}>
+  <nav class="site-nav">
+    <strong>STUDIO</strong>
+
+    <div class="nav-links">
+      <span>Work</span>
+      <span>About</span>
+      <span>Contact</span>
+    </div>
+  </nav>
+
+  <main class="site-main">
+    <p class="eyebrow">CREATIVE STUDIO</p>
+
+    <h1>
+      Make something<em> worth seeing.</em>
+    </h1>
+
+    <p class="description">
+      A simple interface to show how this background behaves with real content.
+    </p>
+
+    <button class="cta">
+      Explore the project
+    </button>
+  </main>
+
+  <div class="site-footer">
+    <span>Collectable Colors</span>
+    <span>© 2026</span>
+  </div>
+</div>
+
+<style>
+  .preview-site {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    color: var(--preview-text);
+  }
+
+  .preview-site[data-theme='dark'] {
+    --preview-text: #fff;
+    --preview-muted: rgba(255, 255, 255, 0.7);
+    --preview-border: rgba(255, 255, 255, 0.25);
+  }
+
+  .preview-site[data-theme='light'] {
+    --preview-text: #111;
+    --preview-muted: rgba(0, 0, 0, 0.65);
+    --preview-border: rgba(0, 0, 0, 0.2);
+  }
+
+  .site-nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.8rem;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 1.5rem;
+    color: var(--preview-muted);
+  }
+
+  .site-main {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .eyebrow {
+    margin: 0 0 1rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    color: var(--preview-muted);
+  }
+
+  h1 {
+    max-width: 40rem;
+    margin: 0 0 1.5rem;
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    line-height: 0.95;
+  }
+
+  h1 em {
+    font-weight: 500;
+    font-style: italic;
+  }
+
+  .description {
+    max-width: 28rem;
+    margin: 0 0 2rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--preview-muted);
+  }
+
+  .cta {
+    border: 1px solid var(--preview-border);
+    border-radius: 999px;
+    padding: 0.75rem 1.25rem;
+    background: transparent;
+    color: var(--preview-text);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.75rem;
+    cursor: pointer;
+  }
+
+  .site-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5rem 2rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.65rem;
+    color: var(--preview-muted);
+  }
+</style>

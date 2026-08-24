@@ -14,12 +14,26 @@ const { title, code, background, theme } = Astro.props;
   <div class="card-content">
     <h2>{title}</h2>
 
-    <button
-      class="copy-button"
-      data-code={code}
-    >
-      Copy CSS
-    </button>
+    <div class="card-actions">
+      <button
+        class="preview-button"
+        type="button"
+        data-preview
+        data-title={title}
+        data-background={background}
+        data-theme={theme}
+      >
+        Preview
+      </button>
+
+      <button
+        class="copy-button"
+        type="button"
+        data-code={code}
+      >
+        Copy CSS
+      </button>
+    </div>
   </div>
 </article>
 
@@ -52,6 +66,13 @@ const { title, code, background, theme } = Astro.props;
     color: var(--color-text);
   }
 
+  .card-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .preview-button,
   .copy-button {
     border: 0;
     padding: 0;
@@ -63,6 +84,7 @@ const { title, code, background, theme } = Astro.props;
     transition: color 0.2s ease;
   }
 
+  .preview-button:hover,
   .copy-button:hover {
     color: var(--color-text);
   }

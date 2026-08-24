@@ -1,0 +1,167 @@
+---
+import PreviewSite from './PreviewSite.astro';
+---
+
+<div class="preview-modal" id="preview-modal" aria-hidden="true">
+  <div class="preview-toolbar">
+    <span class="preview-label">Preview</span>
+    <span class="preview-title" id="preview-title"></span>
+
+    <button class="close-preview" id="close-preview" type="button" aria-label="Close preview">
+      ×
+    </button>
+  </div>
+
+  <div class="preview-container">
+    <div class="preview-content" id="preview-content">
+      <PreviewSite background="#09090b" theme="dark" />
+    </div>
+  </div>
+</div>
+
+<style>
+  .preview-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(12px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  .preview-modal.is-open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .preview-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    height: 3rem;
+    padding-inline: 0.5rem;
+    color: white;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  .preview-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .preview-title {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.75rem;
+  }
+
+  .close-preview {
+    margin-left: auto;
+    width: 2rem;
+    height: 2rem;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 50%;
+    background: transparent;
+    color: white;
+    font-size: 1.2rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .preview-container {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .preview-content {
+    width: 100%;
+    height: 100%;
+    max-width: 1400px;
+    max-height: 900px;
+    overflow: hidden;
+    border-radius: 1rem;
+    transform: scale(0.97);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .preview-modal.is-open .preview-content {
+    transform: scale(1);
+  }
+
+  @media (max-width: 700px) {
+    .preview-modal {
+      padding: 0.5rem;
+    }
+
+    .preview-content {
+      border-radius: 0.75rem;
+    }
+  }
+</style>
+
+<script>
+  const modal = document.querySelector('#preview-modal');
+  const content = document.querySelector('#preview-content');
+  const title = document.querySelector('#preview-title');
+  const closeButton = document.querySelector('#close-preview');
+
+  const previewSite = content?.querySelector('.preview-site');
+  const previewButtons = document.querySelectorAll('[data-preview]');
+
+  previewButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const background = button.getAttribute('data-background');
+      const theme = button.getAttribute('data-theme');
+      const backgroundTitle = button.getAttribute('data-title');
+
+      if (!background || !theme || !previewSite) return;
+
+      previewSite.setAttribute(
+        'style',
+        `background: ${background};`
+      );
+
+      previewSite.setAttribute('data-theme', theme);
+
+      if (title) {
+        title.textContent = backgroundTitle || '';
+      }
+
+      modal?.classList.add('is-open');
+      modal?.setAttribute('aria-hidden', 'false');
+
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  const closePreview = () => {
+    modal?.classList.remove('is-open');
+    modal?.setAttribute('aria-hidden', 'true');
+
+    document.body.style.overflow = '';
+  };
+
+  closeButton?.addEventListener('click', closePreview);
+
+  modal?.addEventListener('click', (event) => {
+    if (event.target === modal) {
+      closePreview();
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      closePreview();
+    }
+  });
+</script>
