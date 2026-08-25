@@ -1,32 +1,28 @@
 <footer class="site-footer">
-  <span>backgrounds.</span>
-
-  <span>Built with CSS · 2026</span>
+  <div class="footer-content">
+    <span>backgrounds.</span>
+    <p>Built with Astro · 2026</p>
+  </div>
 </footer>
 
 <style>
-  .site-footer {
-    width: 100%;
-    max-width: 90rem;
-    margin-inline: auto;
-    padding: 2rem 1.5rem;
+.site-footer {
+  margin-top: 8rem;
+  width: 100%;
+  border-top: 1px solid var(--color-text-muted);
+}
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-
-    border-top: 1px solid var(--color-text-muted);
-
-    color: var(--color-text-muted);
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: var(--fs-sm);
-  }
-
-  @media (max-width: 600px) {
-    .site-footer {
-      align-items: flex-start;
-      flex-direction: column;
-    }
-  }
+.footer-content {
+  width: 100%;
+  max-width: 90rem;
+  margin-inline: auto;
+  padding: 2rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  color: var(--color-text-muted);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: var(--fs-sm);
+}
 </style>

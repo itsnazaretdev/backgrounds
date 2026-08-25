@@ -1,24 +1,78 @@
 ---
 import BackgroundCard from './BackgroundCard.astro';
 import { backgrounds } from '../data/backgrounds.js';
+
+const lightBackgrounds = backgrounds.filter(
+  (background) => background.theme === 'light'
+);
+
+const darkBackgrounds = backgrounds.filter(
+  (background) => background.theme === 'dark'
+);
 ---
 
-<section class="gallery-grid" id="gallery">
-  {backgrounds.map((background) => (
-    <BackgroundCard
-      title={background.title}
-      theme={background.theme}
-      background={background.background}
-      tailwind={background.tailwind}
-    />
-  ))}
+<section class="gallery" id="gallery">
+
+  <section class="gallery-section">
+    <h2 class="gallery-title">Light</h2>
+
+    <div class="gallery-grid">
+      {lightBackgrounds.map((background) => (
+        <BackgroundCard
+          title={background.title}
+          theme={background.theme}
+          background={background.background}
+          tailwind={background.tailwind}
+        />
+      ))}
+    </div>
+  </section>
+
+  <section class="gallery-section">
+    <h2 class="gallery-title">Dark</h2>
+
+    <div class="gallery-grid">
+      {darkBackgrounds.map((background) => (
+        <BackgroundCard
+          title={background.title}
+          theme={background.theme}
+          background={background.background}
+          tailwind={background.tailwind}
+        />
+      ))}
+    </div>
+  </section>
+
 </section>
 
 <style>
-  .gallery-grid {
+  .gallery {
+    width: 100%;
+  }
+
+  .gallery-section {
     width: 100%;
     max-width: 90rem;
     margin-inline: auto;
+  }
+
+  .gallery-section + .gallery-section {
+    margin-top: 7rem;
+  }
+
+  .gallery-title {
+    margin: 0 0 2rem;
+    padding-inline: 1.5rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: var(--fs-sm);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-text-muted);
+  }
+
+  .gallery-grid {
+    width: 100%;
     margin-bottom: 4rem;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -30,8 +84,8 @@ import { backgrounds } from '../data/backgrounds.js';
     opacity: 0;
     transform: translateY(30px);
     transition:
-      opacity 0.7s ease,
-      transform 0.7s ease;
+  opacity 0.5s ease,
+  transform 0.5s ease;
   }
 
   .gallery-grid :global(.background-card.visible) {
@@ -40,22 +94,20 @@ import { backgrounds } from '../data/backgrounds.js';
   }
 
   @media (max-width: 1350px) {
-  .gallery-grid {
-    grid-template-columns: repeat(2, 1fr);
+    .gallery-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
-}
 
-@media (max-width: 900px) {
-  .gallery-grid {
-    grid-template-columns: 1fr;
+  @media (max-width: 900px) {
+    .gallery-grid {
+      grid-template-columns: 1fr;
+    }
   }
-}
 </style>
 
 <script>
-  const cards = document.querySelectorAll(
-    '.gallery-grid .background-card'
-  );
+  const grids = document.querySelectorAll<HTMLElement>('.gallery-grid');
 
   const observer = new IntersectionObserver(
     (entries) => {
@@ -67,18 +119,19 @@ import { backgrounds } from '../data/backgrounds.js';
       });
     },
     {
-      threshold: 0.15
+      threshold: 0.25
     }
   );
 
-  cards.forEach((card, index) => {
-    const delay = Math.min(index * 0.08, 0.4);
+  grids.forEach((grid) => {
+    const cards = grid.querySelectorAll<HTMLElement>('.background-card');
 
-    card.setAttribute(
-      'style',
-      `transition-delay: ${delay}s;`
-    );
+    cards.forEach((card, index) => {
+      const delay = Math.min(index * 0.05, 0.25);
 
-    observer.observe(card);
+      card.style.transitionDelay = `${delay}s`;
+
+      observer.observe(card);
+    });
   });
 </script>
