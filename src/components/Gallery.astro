@@ -4,17 +4,14 @@ import { backgrounds } from '../data/backgrounds.js';
 ---
 
 <section class="gallery-grid" id="gallery">
-  {
-    backgrounds.map((item) => (
-      <BackgroundCard
-        title={item.title}
-        theme={item.theme}
-        background={item.background}
-        code={item.code}
-        /*tailwind={item.tailwind}*/
-      />
-    ))
-  }
+  {backgrounds.map((background) => (
+    <BackgroundCard
+      title={background.title}
+      theme={background.theme}
+      background={background.background}
+      tailwind={background.tailwind}
+    />
+  ))}
 </section>
 
 <style>
@@ -22,8 +19,9 @@ import { backgrounds } from '../data/backgrounds.js';
     width: 100%;
     max-width: 90rem;
     margin-inline: auto;
+    margin-bottom: 4rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
     padding-inline: 1.5rem;
   }
@@ -31,7 +29,6 @@ import { backgrounds } from '../data/backgrounds.js';
   .gallery-grid :global(.background-card) {
     opacity: 0;
     transform: translateY(30px);
-
     transition:
       opacity 0.7s ease,
       transform 0.7s ease;
@@ -41,6 +38,18 @@ import { backgrounds } from '../data/backgrounds.js';
     opacity: 1;
     transform: translateY(0);
   }
+
+  @media (max-width: 1350px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+}
 </style>
 
 <script>

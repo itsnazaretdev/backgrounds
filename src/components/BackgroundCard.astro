@@ -1,15 +1,11 @@
 ---
-const { title, code, background, theme } = Astro.props;
+const { title, background, theme, tailwind } = Astro.props;
+
+const code = `background: ${background};`;
 ---
 
-<article
-  class="background-card reveal"
-  data-theme={theme}
->
-  <div
-    class="preview"
-    style={`background: ${background};`}
-  ></div>
+<article class="background-card reveal" data-theme={theme}>
+  <div class="preview" style={`background: ${background};`}></div>
 
   <div class="card-content">
     <h2>{title}</h2>
@@ -31,7 +27,15 @@ const { title, code, background, theme } = Astro.props;
         type="button"
         data-code={code}
       >
-        Copy CSS
+        CSS
+      </button>
+
+      <button
+        class="copy-button"
+        type="button"
+        data-code={tailwind}
+      >
+        Tailwind
       </button>
     </div>
   </div>
@@ -88,6 +92,18 @@ const { title, code, background, theme } = Astro.props;
   .copy-button:hover {
     color: var(--color-text);
   }
+
+  @media (max-width: 600px) {
+    .card-content {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .card-actions {
+      width: 100%;
+      flex-wrap: wrap;
+    }
+  }
 </style>
 
 <script>
@@ -101,10 +117,12 @@ const { title, code, background, theme } = Astro.props;
 
       await navigator.clipboard.writeText(code);
 
+      const originalText = button.textContent;
+
       button.textContent = 'Copied!';
 
       setTimeout(() => {
-        button.textContent = 'Copy CSS';
+        button.textContent = originalText;
       }, 1500);
     });
   });
