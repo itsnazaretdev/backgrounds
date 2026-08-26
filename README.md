@@ -20,12 +20,6 @@ Each background is available in:
 
 The goal is simple: **find a background you like, preview it, and copy it.**
 
-## 🎨 Browse the backgrounds
-
-The gallery contains different styles, from subtle gradients to more expressive compositions.
-
-The backgrounds are intentionally varied rather than following a single visual style. You'll find warm, neutral, colorful, subtle, dark, and editorial-inspired designs.
-
 ## 👀 Preview
 
 Click **Preview** on any background to see how it looks when applied to a complete website layout.
@@ -80,19 +74,6 @@ The backgrounds are available in both light and dark versions.
 The two versions are designed as visual counterparts rather than simple color inversions. This means that the composition can remain similar while the colors, contrast, and atmosphere change.
 
 Choose the version that fits the overall theme of your website.
-
-## 💡 Tips
-
-### Keep the content readable
-
-A beautiful background should support your content rather than compete with it.
-
-For text-heavy sections, consider using:
-
-* Stronger contrast
-* A subtle overlay
-* A darker or lighter text color
-* A background with less visual movement
 
 
 ## 🛠️ No dependencies required
