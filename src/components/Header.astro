@@ -1,6 +1,7 @@
 ---
 import Github from "./icons/Github.astro"
 ---
+
 <header class="site-header">
   <a
     href="https://github.com/itsnazaretdev"
@@ -15,16 +16,23 @@ import Github from "./icons/Github.astro"
 
 <style>
   .site-header {
-    width: 100%;
-    max-width: 90rem;
-    margin-inline: auto;
-    height: 4rem;
-    padding: 1.5rem;
-    display: flex;
-    align-items: center;
-  }
+  width: 100%;
+  max-width: 90rem;
+  margin-inline: auto;
+  height: 4rem;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
 
   .github-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
     margin-inline: auto;
     transition: color 0.2s ease;
   }
