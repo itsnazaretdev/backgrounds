@@ -1,46 +1,114 @@
-# Astro Starter Kit: Basics
+# Collectable Colors
 
-```sh
-pnpm create astro@latest -- --template basics
+![CSS Gradients](https://img.shields.io/badge/CSS-Gradients-663399?style=flat-square)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-Compatible-06B6D4?style=flat-square)
+![Themes](https://img.shields.io/badge/Themes-Light%20%2F%20Dark-F59E0B?style=flat-square)
+
+A curated collection of ready-to-use CSS and Tailwind CSS backgrounds.
+
+Explore different visual styles, preview them in context, and copy the exact code you need for your project.
+
+## ✨ What is Collectable Colors?
+
+Collectable Colors is a visual collection of backgrounds designed to make it easier to find interesting backgrounds for websites, landing pages, portfolios, blogs, dashboards, and other digital projects.
+
+Each background is available in:
+
+* **CSS** — ready to use with the `background` property.
+* **Tailwind CSS** — ready to use as an arbitrary `bg-[...]` utility.
+* **Light** and **Dark** variations where available.
+
+The goal is simple: **find a background you like, preview it, and copy it.**
+
+## 🎨 Browse the backgrounds
+
+The gallery contains different styles, from subtle gradients to more expressive compositions.
+
+The backgrounds are intentionally varied rather than following a single visual style. You'll find warm, neutral, colorful, subtle, dark, and editorial-inspired designs.
+
+## 👀 Preview
+
+Click **Preview** on any background to see how it looks when applied to a complete website layout.
+
+The preview includes typical website elements such as:
+
+* Navigation
+* Headline
+* Supporting text
+* Call-to-action
+* Footer
+
+This makes it easier to judge the background in context instead of looking at the gradient by itself.
+
+## 📋 Copy CSS
+
+Each background includes its CSS code.
+
+For example copy the value and add it to any element:
+
+```css
+.hero {
+  background:
+    radial-gradient(
+      circle at center,
+      rgb(255, 255, 255) 0%,
+      rgb(255, 255, 255) 25%,
+      transparent 55%
+    ),
+    #e6e0d4;
+}
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## ⚡ Copy Tailwind CSS
 
-## 🚀 Project Structure
+If you're using Tailwind CSS, you can copy the provided utility directly.
 
-Inside of your Astro project, you'll see the following folders and files:
+Example:
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+```html
+<section class="bg-[radial-gradient(circle_at_center,rgb(255,255,255)_0%,rgb(255,255,255)_25%,transparent_55%),#e6e0d4]">
+  ...
+</section>
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+The Tailwind version uses an arbitrary value, so no additional configuration is required for the background itself.
 
-## 🧞 Commands
+## ☀️ Light and 🌙 Dark
 
-All commands are run from the root of the project, from a terminal:
+The backgrounds are available in both light and dark versions.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+The two versions are designed as visual counterparts rather than simple color inversions. This means that the composition can remain similar while the colors, contrast, and atmosphere change.
 
-## 👀 Want to learn more?
+Choose the version that fits the overall theme of your website.
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## 💡 Tips
+
+### Keep the content readable
+
+A beautiful background should support your content rather than compete with it.
+
+For text-heavy sections, consider using:
+
+* Stronger contrast
+* A subtle overlay
+* A darker or lighter text color
+* A background with less visual movement
+
+
+## 🛠️ No dependencies required
+
+The backgrounds themselves are standard CSS gradients.
+
+You don't need a background library or JavaScript to use them.
+
+CSS backgrounds can be copied directly into existing projects, while the Tailwind versions can be used with Tailwind's arbitrary value syntax.
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).
+
+## ❤️ Made for experimentation
+
+Colletable Color is intended to make experimenting with visual direction quick and enjoyable.
+
+Find something interesting, try it in your project, change the colors, adjust the gradients, and make it your own.
