@@ -30,6 +30,7 @@
 html {
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
+  scrollbar-gutter: stable;
 }
 
 body {
@@ -37,6 +38,7 @@ body {
   -webkit-font-smoothing: antialiased;
   background: var(--color-bg);
   color: var(--color-text);
+  overflow-x: hidden;
 }
 
 img, picture, video, canvas, svg {
